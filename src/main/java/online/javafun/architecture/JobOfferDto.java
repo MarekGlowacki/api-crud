@@ -1,15 +1,8 @@
 package online.javafun.architecture;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
-
 import java.time.LocalDateTime;
 
-@Entity
-public class JobOffer {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class JobOfferDto {
     private Long id;
     private String title;
     private String description;
@@ -19,10 +12,8 @@ public class JobOffer {
     private Double minSalary;
     private Double maxSalary;
     private LocalDateTime dateAdded;
-    private Integer submissions;
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "company_id")
-    private Company company;
+    private Long companyId;
+    private String companyName;
 
     public Long getId() {
         return id;
@@ -96,19 +87,19 @@ public class JobOffer {
         this.dateAdded = dateAdded;
     }
 
-    public Integer getSubmissions() {
-        return submissions;
+    public Long getCompanyId() {
+        return companyId;
     }
 
-    public void setSubmissions(Integer submissions) {
-        this.submissions = submissions;
+    public void setCompanyId(Long companyId) {
+        this.companyId = companyId;
     }
 
-    public Company getCompany() {
-        return company;
+    public String getCompanyName() {
+        return companyName;
     }
 
-    public void setCompany(Company company) {
-        this.company = company;
+    public void setCompanyName(String companyName) {
+        this.companyName = companyName;
     }
 }
