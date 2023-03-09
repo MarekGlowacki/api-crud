@@ -1,9 +1,10 @@
-package online.javafun.architecture;
+package online.javafun.architecture.company;
 
+import online.javafun.architecture.jobOffer.JobOffer;
 import org.springframework.stereotype.Service;
 
 @Service
-public class CompanyJobOfferDtoMapper {
+class CompanyJobOfferDtoMapper {
     CompanyJobOfferDto map(JobOffer jobOffer) {
         CompanyJobOfferDto dto = new CompanyJobOfferDto();
         dto.setId(jobOffer.getId());

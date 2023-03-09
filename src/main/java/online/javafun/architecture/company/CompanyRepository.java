@@ -1,4 +1,4 @@
-package online.javafun.architecture;
+package online.javafun.architecture.company;
 
 import org.springframework.data.repository.CrudRepository;
 

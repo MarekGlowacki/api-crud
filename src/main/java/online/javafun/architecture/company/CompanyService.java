@@ -1,4 +1,4 @@
-package online.javafun.architecture;
+package online.javafun.architecture.company;
 
 import org.springframework.stereotype.Service;
 
@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class CompanyService {
+class CompanyService {
     private final CompanyRepository companyRepository;
     private final CompanyDtoMapper companyDtoMapper;
     private final CompanyJobOfferDtoMapper companyJobOfferDtoMapper;

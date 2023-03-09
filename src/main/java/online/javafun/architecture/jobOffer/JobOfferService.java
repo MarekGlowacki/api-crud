@@ -1,11 +1,11 @@
-package online.javafun.architecture;
+package online.javafun.architecture.jobOffer;
 
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class JobOfferService {
+class JobOfferService {
     private JobOfferRepository jobOfferRepository;
     private JobOfferDtoMapper jobOfferDtoMapper;
 

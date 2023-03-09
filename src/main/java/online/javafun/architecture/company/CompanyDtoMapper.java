@@ -1,9 +1,9 @@
-package online.javafun.architecture;
+package online.javafun.architecture.company;
 
 import org.springframework.stereotype.Service;
 
 @Service
-public class CompanyDtoMapper {
+class CompanyDtoMapper {
     CompanyDto map(Company company) {
         CompanyDto companyDto = new CompanyDto();
         companyDto.setId(company.getId());

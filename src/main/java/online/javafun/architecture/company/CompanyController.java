@@ -1,4 +1,4 @@
-package online.javafun.architecture;
+package online.javafun.architecture.company;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/companies")
-public class CompanyController {
+class CompanyController {
     private final CompanyService companyService;
 
     public CompanyController(CompanyService companyService) {

@@ -1,13 +1,24 @@
-package online.javafun.architecture;
+package online.javafun.architecture.company;
 
-public class CompanyDto {
+import jakarta.persistence.*;
+import online.javafun.architecture.jobOffer.JobOffer;
+
+import java.util.ArrayList;
+import java.util.List;
+
+@Entity
+public class Company {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String description;
     private String city;
-    private Integer employees;
     private String telephone;
     private String email;
+    private Integer employees;
+    @OneToMany(mappedBy = "company")
+    private List<JobOffer> jobOffers = new ArrayList<>();
 
     public Long getId() {
         return id;
@@ -41,14 +52,6 @@ public class CompanyDto {
         this.city = city;
     }
 
-    public Integer getEmployees() {
-        return employees;
-    }
-
-    public void setEmployees(Integer employees) {
-        this.employees = employees;
-    }
-
     public String getTelephone() {
         return telephone;
     }
@@ -63,5 +66,21 @@ public class CompanyDto {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Integer getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(Integer employees) {
+        this.employees = employees;
+    }
+
+    public List<JobOffer> getJobOffers() {
+        return jobOffers;
+    }
+
+    public void setJobOffers(List<JobOffer> jobOffers) {
+        this.jobOffers = jobOffers;
     }
 }

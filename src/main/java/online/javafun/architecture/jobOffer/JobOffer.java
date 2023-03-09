@@ -1,8 +1,14 @@
-package online.javafun.architecture;
+package online.javafun.architecture.jobOffer;
+
+import jakarta.persistence.*;
+import online.javafun.architecture.company.Company;
 
 import java.time.LocalDateTime;
 
-public class JobOfferDto {
+@Entity
+public class JobOffer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String title;
     private String description;
@@ -12,8 +18,10 @@ public class JobOfferDto {
     private Double minSalary;
     private Double maxSalary;
     private LocalDateTime dateAdded;
-    private Long companyId;
-    private String companyName;
+    private Integer submissions;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "company_id")
+    private Company company;
 
     public Long getId() {
         return id;
@@ -87,19 +95,19 @@ public class JobOfferDto {
         this.dateAdded = dateAdded;
     }
 
-    public Long getCompanyId() {
-        return companyId;
+    public Integer getSubmissions() {
+        return submissions;
     }
 
-    public void setCompanyId(Long companyId) {
-        this.companyId = companyId;
+    public void setSubmissions(Integer submissions) {
+        this.submissions = submissions;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public Company getCompany() {
+        return company;
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public void setCompany(Company company) {
+        this.company = company;
     }
 }

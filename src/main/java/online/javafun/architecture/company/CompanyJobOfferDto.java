@@ -1,6 +1,6 @@
-package online.javafun.architecture;
+package online.javafun.architecture.company;
 
-public class CompanyJobOfferDto {
+class CompanyJobOfferDto {
     private Long id;
     private String title;
     private Double minSalary;
