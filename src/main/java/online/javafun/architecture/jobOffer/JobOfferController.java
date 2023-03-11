@@ -1,11 +1,13 @@
 package online.javafun.architecture.jobOffer;
 
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
 
 @RestController
+@RequestMapping("/offers")
 class JobOfferController {
     private final JobOfferService jobOfferService;
 
@@ -13,11 +15,21 @@ class JobOfferController {
         this.jobOfferService = jobOfferService;
     }
 
-    @GetMapping("/offers/{id}")
+    @GetMapping("/{id}")
     ResponseEntity<JobOfferDto> getOfferById(@PathVariable Long id) {
 
         return jobOfferService.getOfferById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PostMapping
+    ResponseEntity<JobOfferDto> saveJobOffer(@RequestBody JobOfferDto jobOfferDto) {
+        JobOfferDto savedJobOffer = jobOfferService.saveOffer(jobOfferDto);
+        URI savedJobOfferUri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedJobOffer.getId())
+                .toUri();
+        return ResponseEntity.created(savedJobOfferUri).body(savedJobOffer);
     }
 }

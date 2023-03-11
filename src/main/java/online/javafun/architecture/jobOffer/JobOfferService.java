@@ -2,6 +2,7 @@ package online.javafun.architecture.jobOffer;
 
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Service
@@ -16,5 +17,12 @@ class JobOfferService {
 
     Optional<JobOfferDto> getOfferById(Long id) {
         return jobOfferRepository.findById(id).map(jobOfferDtoMapper::map);
+    }
+
+    JobOfferDto saveOffer(JobOfferDto jobOfferDto) {
+        JobOffer jobOffer = jobOfferDtoMapper.map(jobOfferDto);
+        jobOffer.setDateAdded(LocalDateTime.now());
+        JobOffer savedJobOffer = jobOfferRepository.save(jobOffer);
+        return jobOfferDtoMapper.map(savedJobOffer);
     }
 }
