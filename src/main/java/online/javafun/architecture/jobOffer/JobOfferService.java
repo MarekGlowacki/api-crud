@@ -25,4 +25,9 @@ class JobOfferService {
         JobOffer savedJobOffer = jobOfferRepository.save(jobOffer);
         return jobOfferDtoMapper.map(savedJobOffer);
     }
+
+    void updateOffer(JobOfferDto jobOfferDto) {
+        JobOffer jobOfferToUpdate = jobOfferDtoMapper.map(jobOfferDto);
+        jobOfferRepository.save(jobOfferToUpdate);
+    }
 }
