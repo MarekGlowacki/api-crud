@@ -47,4 +47,8 @@ class CompanyService {
         Company updatedCompany = companyRepository.save(companyToUpdate);
         return Optional.of(companyDtoMapper.map(updatedCompany));
     }
+
+    void deleteCompany(Long id) {
+        companyRepository.deleteById(id);
+    }
 }

@@ -61,4 +61,10 @@ class JobOfferController {
         JsonNode jobOfferJsonNode = jsonMergePatch.apply(jobOfferNode);
         return objectMapper.treeToValue(jobOfferJsonNode, JobOfferDto.class);
     }
+
+    @DeleteMapping("/{id}")
+    ResponseEntity<?> deleteJobOffer(@PathVariable Long id) {
+        jobOfferService.deleteOffer(id);
+        return ResponseEntity.noContent().build();
+    }
 }
